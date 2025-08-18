@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 añito de nuestra relacion</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad390);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      color: #fff;
+      background: linear-gradient(135deg, #f857a6, #ff5858);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    .carta {
+      max-width: 800px;
+      margin: 40px auto;
+      background: linear-gradient(135deg, #fff, #ffe6f0);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carta h2 {
+      color: #f857a6;
+      margin-bottom: 20px;
+    }
+
+    .carta p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .btn-ver {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #f857a6, #ff5858);
+      color: white;
+      border-radius: 30px;
+      font-size: 1.1em;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-ver:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 20px rgba(248, 87, 166, 0.7);
+    }
+
+    .btn-ver::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.6);
+      transform: skewX(-45deg);
+    }
+
+    .btn-ver:hover::before {
+      animation: shine 0.8s forwards;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 50px auto;
+      display: none;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(180deg, #f857a6, #ff5858);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 5px;
+    }
+
+    .container {
+      padding: 20px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    .container.left { left: 0; }
+    .container.right { left: 50%; }
+
+    .content {
+      padding: 20px;
+      background: linear-gradient(135deg, #fff, #ffe9f3);
+      position: relative;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .content:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 25px rgba(248, 87, 166, 0.4);
+    }
+
+    .container img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .date {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #f857a6;
+    }
+
+    /* Animación corazones cayendo */
+    .corazon {
+      position: absolute;
+      top: -10px;
+      color: #ff4e73;
+      font-size: 20px;
+      animation: caer 8s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>1 añito ❤ </h1>
+    <p>UN RESUMEN DE NUESTROS MOMENTOS💖</p>
+  </header>
+
+  <div class="carta">
+    <h2>Mi amor</h2>
+    <p>Feliz 1 año, mi amorcito ❤. Hoy celebramos un año de amor, de risas, de aventuras juntos, de momentos inolvidables y de todo lo que hemos compartido. Desde el primer día que nos conocimos, supe que eras alguien especial, y cada día que pasa me doy cuenta más de lo afortunado que soy de tenerte a mi lado.
+
+Me encanta cómo nos complementamos, cómo nos reímos juntos, cómo nos apoyamos en todo. Me encanta la forma en que me haces sentir cuando estoy contigo, como si todo fuera posible. Eres mi compañera de aventuras , mi confidente, mi amiga y mi todo.
+
+Este año ha sido increíble y sé que lo que viene será aún mejor. Quiero seguir creando recuerdos contigo, seguir riendo contigo, seguir amándote cada día más 💕.
+
+Gracias por ser tú, por ser Danna, por ser mi novia. Gracias por hacerme feliz cada día.
+
+Te amo con todo mi corazo ❤. Feliz 1 año, mi amor.</p>
+    <a class="btn-ver" onclick="mostrarMomentos(); playSound()">Ver nuestros momentos ✨</a>
+  </div>
+
+  <div class="timeline" id="timeline">
+    <!-- Momento 1 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">Nuestra primera foto</p>
+        <img src="img/17.jpeg" alt="Primer foto juntos">
+        <p>En tu cuadra, en la noche... el comienzo de nuestra relación 💕</p>
+      </div>
+    </div>
+
+    <!-- Momento 2 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">Compartiendo con tu familia</p>
+        <img src="img/16.jpeg" alt="Familia en Soacha">
+        <p>La primera vez que estuve en Soacha, compartiendo con tu familia y en el bautizo de Mimi ✨</p>
+      </div>
+    </div>
+
+    <!-- Momento 3 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">Una fotico antes de dormir</p>
+        <img src="img/13.jpeg" alt="Momento 3">
+        <p></p>
+      </div>
+    </div>
+
+    <!-- Momento 4 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">Amaneciendo con la Mimi</p>
+        <img src="img/19.jpg" alt="Momento 4">
+        <p></p>
+      </div>
+    </div>
+
+    <!-- Momento 5 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">Cuando pasamos 7 de velitas juntos</p>
+        <img src="img/20.jpg" alt="Momento 5-1">
+        <img src="img/21.jpg" alt="Momento 5-2">
+        <p></p>
+      </div>
+    </div>
+
+    <!-- Momento 6 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">Cuando fuimos a ver alumbrados juntos</p>
+        <img src="img/22.jpg" alt="Momento 6 Alumbrados">
+        <p></p>
+      </div>
+    </div>
+
+    <!-- Momento 7 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">nuestro hijo</p>
+        <img src="img/36.jpg" alt="Cumpleaños de Mimi">
+        <p>tom pardo hurtado</p>
+      </div>
+    </div>
+
+    <!-- Momento 8 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">Nosotros lo más de lindos el 24 de diciembre</p>
+        <img src="img/23.jpg" alt="24 de diciembre juntos">
+        <p> el 24 lo mas de lindos comiendo </p>
+      </div>
+    </div>
+
+    <!-- Momento 9 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">tranquilos el 31 de diciembre</p>
+        <img src="img/24.jpg" alt="Viaje juntos">
+        <p>nosotros todos trasnochados en la sala viendo videos</p>
+      </div>
+    </div>
+
+    <!-- Momento 10 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">¿desayunando?</p>
+        <img src="img/25.jpg" alt="Paseo parque">
+        <p>recien levantados jajajajaj</p>
+      </div>
+    </div>
+
+    <!-- Momento 11 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">parchando</p>
+        <img src="img/26.jpg" alt="Cine juntos">
+        <p>❤️</p>
+      </div>
+    </div>
+
+    <!-- Momento 12 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">combinando claro que si</p>
+        <img src="img/27.jpg" alt="Día de lluvia">
+        <p>nosotros combinando antes de salir</p>
+      </div>
+    </div>
+
+    <!-- Momento 13 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">los mas juiciosos posibles</p>
+        <img src="img/28.jpg" alt="Atardecer juntos">
+        <p>con frio pero bonitos </p>
+      </div>
+    </div>
+
+    <!-- Momento 14 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">en el pumpeaños de talitos</p>
+        <img src="img/29.jpg" alt="Cena romántica">
+        <p>cuando talitos estaba de cumpleaños y estaba todo lindo con su gorrito</p>
+      </div>
+    </div>
+
+    <!-- Momento 15 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">cocinando jajaja"el aceite"</p>
+        <img src="img/30.jpg" alt="Bailando juntos">
+        <p>"el aceiteeeeeee"</p>
+      </div>
+    </div>
+
+    <!-- Momento 16 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">antes de cocinar</p>
+        <img src="img/31.jpg" alt="Primer aniversario">
+        <p>antes de la tragedia </p>
+      </div>
+    </div>
+
+    <!-- Momento 17 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">en el cumpleaños de mi amorcito</p>
+        <img src="img/32.jpg" alt="Paseo bicicleta">
+        <p>cuando la niña estaba cumpliendo años y talitos haciendo su magia  </p>
+      </div>
+    </div>
+
+    <!-- Momento 18 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">queso pera</p>
+        <img src="img/33.jpg" alt="Primer regalo">
+        <p>cuando talitos le regalo a la niña el 3 hijo, snoopy "queso pera"</p>
+      </div>
+    </div>
+
+    <!-- Momento 19 -->
+    <div class="container left">
+      <div class="content">
+        <p class="date">cineeeee</p>
+        <img src="img/34.jpg" alt="Cocinando juntos">
+        <p>nosotros lejos jajajja </p>
+      </div>
+    </div>
+
+    <!-- Momento 20 -->
+    <div class="container right">
+      <div class="content">
+        <p class="date">nuestro otro hijo</p>
+        <img src="img/35.jpg" alt="Noche de estrellas">
+        <p>nuestro 2 hijo que su llegada ha sido muy especial</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Música de fondo siempre encendida -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="musica/starting-over.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+  <audio id="bellSound" src="musica/starting-over.mp3.mp3" preload="auto"></audio>
+
+  <script>
+    function mostrarMomentos() {
+      document.getElementById("timeline").style.display = "block";
+      document.querySelector(".carta").style.display = "none";
+    }
+
+    function playSound() {
+      document.getElementById("bellSound").play();
+    }
+
+    // Generar corazones aleatorios
+    setInterval(() => {
+      let corazon = document.createElement("div");
+      corazon.innerHTML = "❤";
+      corazon.classList.add("corazon");
+      corazon.style.left = Math.random() * window.innerWidth + "px";
+      corazon.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, 8000);
+    }, 500);
+  </script>
+</body>
+</html>
